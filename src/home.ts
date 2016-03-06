@@ -3,19 +3,14 @@ import { Card } from './card';
 import { CardDataInjector } from './card-data-injector';
 
 @autoinject
-export class Welcome {
+export class Home {
   tierOneCards = [];
   tierTwoCards = [];
   tierThreeCards = [];
 
   constructor(private cardData: CardDataInjector) { }
 
-  //Getters can't be directly observed, so they must be dirty checked.
-  //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
-  //To optimize by declaring the properties that this getter is computed from, uncomment the line below
-  //as well as the corresponding import above.
-  //@computedFrom('firstName', 'lastName')
-
+  // Add a new card to the relevant list
   newCardClick(tier: number) {
     switch (tier) {
       case 1:
