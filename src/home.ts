@@ -4,10 +4,6 @@ import { CardDataInjector } from './card-data-injector';
 
 @autoinject
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App!';
-  firstName = 'John';
-  lastName = 'Doe';
-  previousValue = this.fullName;
   tierOneCards = [];
   tierTwoCards = [];
   tierThreeCards = [];
@@ -19,20 +15,6 @@ export class Welcome {
   //To optimize by declaring the properties that this getter is computed from, uncomment the line below
   //as well as the corresponding import above.
   //@computedFrom('firstName', 'lastName')
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
-
-  submit() {
-    this.previousValue = this.fullName;
-    alert(`Welcome, ${this.fullName}!`);
-  }
-
-  canDeactivate() {
-    if (this.fullName !== this.previousValue) {
-      return confirm('Are you sure you want to leave?');
-    }
-  }
 
   newCardClick(tier: number) {
     switch (tier) {
@@ -49,11 +31,5 @@ export class Welcome {
           this.tierThreeCards.push(new Card(this.cardData));
         break;
     }
-  }
-}
-
-export class UpperValueConverter {
-  toView(value) {
-    return value && value.toUpperCase();
   }
 }
